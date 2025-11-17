@@ -6,7 +6,7 @@
 /*   By: raulp <raulp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:41 by raulp             #+#    #+#             */
-/*   Updated: 2025/11/05 10:25:29 by raulp            ###   ########.fr       */
+/*   Updated: 2025/11/11 13:00:07 by raulp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+
 char	*ft_strjoin(char const *s1, char const *s2 )
 {
 	size_t	arr1;
@@ -51,5 +52,44 @@ char	*ft_strjoin(char const *s1, char const *s2 )
 	if (!p)
 		return (NULL);
 	insert_array(s1, s2, p);
+	return (p);
+}
+
+static void	write_subs(char const *s, unsigned int start, size_t len, char *p)
+{
+	unsigned int	i;
+	size_t			j;
+
+	i = 0;
+	j = 0;
+	while (i < start)
+		i++;
+	while (j < len && s[i])
+		p[j++] = s[i++];
+	p[j] = '\0';
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	arr1;
+	char	*p;
+
+	if (!s)
+		return (NULL);
+	arr1 = ft_strlen (s);
+	if (start >= arr1)
+	{
+		p = malloc(1);
+		if (!p)
+			return (NULL);
+		p[0] = '\0';
+		return (p);
+	}
+	if (len > arr1 - start)
+		len = arr1 - start;
+	p = malloc (len + 1);
+	if (!p)
+		return (NULL);
+	write_subs (s, start, len, p);
 	return (p);
 }
