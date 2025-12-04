@@ -6,7 +6,7 @@
 /*   By: raulp <raulp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:23 by raulp             #+#    #+#             */
-/*   Updated: 2025/11/26 15:55:03 by raulp            ###   ########.fr       */
+/*   Updated: 2025/12/04 03:35:03 by raulp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static char *get_buffer_to_stash(char *stash, int fd)
 {
-	// get the informaction until size
 	char *buffer;
 	int read_bytes;
 
@@ -22,7 +21,13 @@ static char *get_buffer_to_stash(char *stash, int fd)
 
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
+	{
+		free(stash);
 		return (NULL);
+	}
+	if (!stash)
+		stash = ft_strdup("");
+
 	while (!ft_strchr(stash, '\n') && read_bytes != 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
@@ -31,6 +36,7 @@ static char *get_buffer_to_stash(char *stash, int fd)
 		if (read_bytes == -1)
 		{
 			free(buffer);
+			free(stash);
 			return NULL;
 		}
 	}
@@ -66,7 +72,34 @@ static char *return_line(char *stash)
 	line[j] = '\0';
 	return (line);
 }
-
+static char *free_stash(char *stash)
+{
+	int	i;
+	int	j;
+	char *new_stash;
+	char *old_stash = stash;
+	
+	i = 0;
+	j = 0;
+	while (stash[i] && stash[i] != '\n')
+		i++;
+	if(!stash[i])
+	{
+		free(stash);
+		return NULL;
+	}
+	new_stash = malloc(ft_strlen(stash) - i + 1);
+	i++;
+	while (stash[i])
+	{
+		new_stash[j] = stash[i];
+		j++;
+		i++;
+	}
+	new_stash[j] = '\0';
+	free(old_stash);
+	return new_stash;
+}
 /* stash =
 1- accumulator storage all the lines, until they found the /n,
 	2- plus, when the functions ends, extract the line, and update stash
@@ -81,18 +114,16 @@ static char *return_line(char *stash)
 
 char *get_next_line(int fd)
 {
-	// read and storage
 	static char *stash;
 	char *line;
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	stash = get_buffer_to_stash(stash,fd);
-	// read and full stash
 	if (!stash)
 		return (NULL);
-	// 2. Paso: Extraer la línea (te falta esta función)
 	line = return_line(stash);
 	// 3. Paso: Limpiar stash (te falta esta función)
-	// stash = clean_stash(stash);
+	stash = free_stash(stash);
 	return line;
 }
