@@ -6,49 +6,52 @@
 /*   By: raulp <raulp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:23 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/04 03:35:03 by raulp            ###   ########.fr       */
+/*   Updated: 2025/12/04 04:47:33 by raulp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char *get_buffer_to_stash(char *stash, int fd)
+static char	*ft_free_leak(char *arr)
 {
-	char *buffer;
-	int read_bytes;
+	free(arr);
+	return (NULL);
+}
+
+static char	*get_buffer_to_stash(char *stash, int fd)
+{
+	char	*buffer;
+	int		read_bytes;
+	char	*tmp;
 
 	read_bytes = 1;
-
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
-	{
-		free(stash);
-		return (NULL);
-	}
+		return (ft_free_leak(stash));
 	if (!stash)
 		stash = ft_strdup("");
-
 	while (!ft_strchr(stash, '\n') && read_bytes != 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
-		buffer[read_bytes] = '\0';
-		stash = ft_strjoin(stash, buffer);
 		if (read_bytes == -1)
 		{
 			free(buffer);
-			free(stash);
-			return NULL;
+			return (ft_free_leak(stash));
 		}
+		buffer[read_bytes] = '\0';
+		tmp = ft_strjoin(stash, buffer);
+		free(stash);
+		stash = tmp;
 	}
 	free(buffer);
-	return stash;
+	return (stash);
 }
 
-static char *return_line(char *stash)
+static char	*return_line(char *stash)
 {
-	int i;
-	int j;
-	char *line;
+	int		i;
+	int		j;
+	char	*line;
 
 	i = 0;
 	j = 0;
@@ -72,23 +75,24 @@ static char *return_line(char *stash)
 	line[j] = '\0';
 	return (line);
 }
-static char *free_stash(char *stash)
+
+static char	*free_stash(char *stash)
 {
-	int	i;
-	int	j;
-	char *new_stash;
-	char *old_stash = stash;
-	
+	int		i;
+	int		j;
+	char	*new_stash;
+	char	*old_stash;
+
 	i = 0;
 	j = 0;
+	old_stash = stash;
 	while (stash[i] && stash[i] != '\n')
 		i++;
-	if(!stash[i])
-	{
-		free(stash);
-		return NULL;
-	}
+	if (!stash[i])
+		return (ft_free_leak(stash));
 	new_stash = malloc(ft_strlen(stash) - i + 1);
+	if (!new_stash)
+		return (ft_free_leak(stash));
 	i++;
 	while (stash[i])
 	{
@@ -98,32 +102,20 @@ static char *free_stash(char *stash)
 	}
 	new_stash[j] = '\0';
 	free(old_stash);
-	return new_stash;
+	return (new_stash);
 }
-/* stash =
-1- accumulator storage all the lines, until they found the /n,
-	2- plus, when the functions ends, extract the line, and update stash
-		to only storage the excedent
-*/
-/* buffer =
-	1- use read, to read the file fd
-	2- limit size
-	3-  amnesia
 
- */
-
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char *stash;
-	char *line;
+	static char	*stash;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	stash = get_buffer_to_stash(stash,fd);
+	stash = get_buffer_to_stash(stash, fd);
 	if (!stash)
 		return (NULL);
 	line = return_line(stash);
-	// 3. Paso: Limpiar stash (te falta esta función)
 	stash = free_stash(stash);
-	return line;
+	return (line);
 }

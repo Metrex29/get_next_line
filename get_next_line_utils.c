@@ -6,15 +6,15 @@
 /*   By: raulp <raulp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:41 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/04 03:34:50 by raulp            ###   ########.fr       */
+/*   Updated: 2025/12/04 04:44:10 by raulp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
@@ -22,11 +22,11 @@ size_t ft_strlen(const char *s)
 	return (i);
 }
 
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *p;
-	size_t i;
-	size_t j;
+	char	*p;
+	size_t	i;
+	size_t	j;
 
 	if (!s1 || !s2)
 		return (NULL);
@@ -48,9 +48,10 @@ char *ft_strjoin(char const *s1, char const *s2)
 	p[i + j] = '\0';
 	return (p);
 }
-char *ft_strchr(const char *s, int c)
+
+char	*ft_strchr(const char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while ((unsigned char)s[i])
@@ -63,11 +64,12 @@ char *ft_strchr(const char *s, int c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
-char *ft_strdup(const char *string)
+
+char	*ft_strdup(const char *string)
 {
-	size_t i;
-	size_t len;
-	char *arr;
+	size_t	i;
+	size_t	len;
+	char	*arr;
 
 	i = 0;
 	len = ft_strlen(string);
