@@ -6,7 +6,7 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:41 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/09 13:48:43 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:36:52 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
-
+if (!s) // <--- ESTO ES LO QUE TE FALTA Y LO QUE CAUSA EL SEGFAULT
+		return (0);
 	i = 0;
 	while (s[i])
 		i++;

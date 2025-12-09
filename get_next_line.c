@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raulp <raulp@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:23 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/04 04:47:33 by raulp            ###   ########.fr       */
+/*   Updated: 2025/12/09 14:39:42 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ static char	*get_buffer_to_stash(char *stash, int fd)
 	int		read_bytes;
 	char	*tmp;
 
-	read_bytes = 1;
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
-		return (ft_free_leak(stash));
+	return (ft_free_leak(stash));
 	if (!stash)
-		stash = ft_strdup("");
+	stash = ft_strdup("");
+	read_bytes = 1;
+
+
+	
 	while (!ft_strchr(stash, '\n') && read_bytes != 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
@@ -38,6 +41,8 @@ static char	*get_buffer_to_stash(char *stash, int fd)
 			free(buffer);
 			return (ft_free_leak(stash));
 		}
+		if( read_bytes == 0 )
+			break ;
 		buffer[read_bytes] = '\0';
 		tmp = ft_strjoin(stash, buffer);
 		free(stash);
