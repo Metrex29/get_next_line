@@ -6,11 +6,14 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:23 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/09 14:39:42 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/10 14:06:38 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
 static char	*ft_free_leak(char *arr)
 {
@@ -22,18 +25,14 @@ static char	*get_buffer_to_stash(char *stash, int fd)
 {
 	char	*buffer;
 	int		read_bytes;
-	char	*tmp;
 
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
-	return (ft_free_leak(stash));
+		return (ft_free_leak(stash));
 	if (!stash)
-	stash = ft_strdup("");
+		stash = ft_strdup("");
 	read_bytes = 1;
-
-
-	
-	while (!ft_strchr(stash, '\n') && read_bytes != 0)
+	while (!ft_strchr(stash, '\n') && read_bytes > 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
@@ -44,9 +43,12 @@ static char	*get_buffer_to_stash(char *stash, int fd)
 		if( read_bytes == 0 )
 			break ;
 		buffer[read_bytes] = '\0';
-		tmp = ft_strjoin(stash, buffer);
-		free(stash);
-		stash = tmp;
+		stash = ft_strjoin(stash, buffer);
+		if(!stash)
+		{
+			free(buffer);
+			return (ft_free_leak(stash));
+		}
 	}
 	free(buffer);
 	return (stash);
@@ -86,11 +88,8 @@ static char	*free_stash(char *stash)
 	int		i;
 	int		j;
 	char	*new_stash;
-	char	*old_stash;
-
 	i = 0;
 	j = 0;
-	old_stash = stash;
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (!stash[i])
@@ -101,12 +100,10 @@ static char	*free_stash(char *stash)
 	i++;
 	while (stash[i])
 	{
-		new_stash[j] = stash[i];
-		j++;
-		i++;
+		new_stash[j++] = stash[i++];
 	}
 	new_stash[j] = '\0';
-	free(old_stash);
+	free(stash);
 	return (new_stash);
 }
 
@@ -121,6 +118,11 @@ char	*get_next_line(int fd)
 	if (!stash)
 		return (NULL);
 	line = return_line(stash);
+	if (!line)
+	{
+		stash = free_stash(stash);
+		return (NULL);
+	}
 	stash = free_stash(stash);
 	return (line);
 }

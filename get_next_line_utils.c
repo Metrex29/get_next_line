@@ -6,7 +6,7 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:41 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/09 14:36:52 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/10 12:59:04 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,19 @@ if (!s) // <--- ESTO ES LO QUE TE FALTA Y LO QUE CAUSA EL SEGFAULT
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*p;
 	size_t	i;
 	size_t	j;
 
-	if (!s1 || !s2)
-		return (NULL);
+	if (!s1)
+	{
+		s1 = malloc(1);
+		if (!s1)
+			return (NULL);
+		s1[0] = '\0';
+	}
 	p = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!p)
 		return (NULL);
@@ -46,6 +51,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		p[i + j] = s2[j];
 		j++;
 	}
+	free(s1);
 	p[i + j] = '\0';
 	return (p);
 }
