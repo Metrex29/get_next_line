@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raulp <raulp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:41 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/10 12:59:04 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/10 14:48:02 by raulp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,36 +22,37 @@ if (!s) // <--- ESTO ES LO QUE TE FALTA Y LO QUE CAUSA EL SEGFAULT
 		i++;
 	return (i);
 }
-
-char	*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*p;
 	size_t	i;
 	size_t	j;
+	size_t	len1;
+	size_t	len2;
 
-	if (!s1)
-	{
-		s1 = malloc(1);
-		if (!s1)
-			return (NULL);
-		s1[0] = '\0';
-	}
-	p = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	p = malloc(len1 + len2 + 1);
 	if (!p)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (s1[i])
+	if (s1)
 	{
-		p[i] = s1[i];
-		i++;
+		while (i < len1)
+		{
+			p[i] = s1[i];
+			i++;
+		}
 	}
-	while (s2[j])
+	if (s2)
 	{
-		p[i + j] = s2[j];
-		j++;
+		while (j < len2)
+		{
+			p[i + j] = s2[j];
+			j++;
+		}
 	}
-	free(s1);
 	p[i + j] = '\0';
 	return (p);
 }
@@ -79,7 +80,14 @@ char	*ft_strdup(const char *string)
 	size_t	i;
 	size_t	len;
 	char	*arr;
-
+	if (!string)
+	{
+		arr = malloc(1);
+		if (!arr)
+			return (NULL);
+		arr[0] = '\0';
+		return (arr);
+	}
 	i = 0;
 	len = ft_strlen(string);
 	arr = malloc(len + 1);
