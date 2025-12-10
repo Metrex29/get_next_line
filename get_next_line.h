@@ -6,7 +6,7 @@
 /*   By: raulp <raulp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:55:02 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/10 14:40:36 by raulp            ###   ########.fr       */
+/*   Updated: 2025/12/10 15:25:32 by raulp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 #  define BUFFER_SIZE 42
 
 
+# endif
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
 # endif
 
 char	*get_next_line(int fd);
