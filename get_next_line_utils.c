@@ -3,25 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raulp <raulp@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:41 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/10 14:48:02 by raulp            ###   ########.fr       */
+/*   Updated: 2025/12/11 12:33:12 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdlib.h>
 
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
-if (!s) // <--- ESTO ES LO QUE TE FALTA Y LO QUE CAUSA EL SEGFAULT
+
+	if (!s)
 		return (0);
 	i = 0;
 	while (s[i])
 		i++;
 	return (i);
 }
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*p;
@@ -61,7 +64,7 @@ char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
-	if(!s)
+	if (!s)
 		return (NULL);
 	i = 0;
 	while ((unsigned char)s[i])
@@ -80,6 +83,7 @@ char	*ft_strdup(const char *string)
 	size_t	i;
 	size_t	len;
 	char	*arr;
+
 	if (!string)
 	{
 		arr = malloc(1);

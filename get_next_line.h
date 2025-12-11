@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raulp <raulp@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:55:02 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/10 15:25:32 by raulp            ###   ########.fr       */
+/*   Updated: 2025/12/11 13:54:47 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
+
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

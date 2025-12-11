@@ -1,0 +1,15 @@
+----- BUFFER_SIZE=1 -----
+LINE 1 (len=1): 0
+HEX: 30 
+
+Fin, líneas leídas: 1
+----- BUFFER_SIZE=10 -----
+LINE 1 (len=1): 0
+HEX: 30 
+
+Fin, líneas leídas: 1
+----- BUFFER_SIZE=1000000 -----
+LINE 1 (len=1): 0
+HEX: 30 
+
+Fin, líneas leídas: 1
