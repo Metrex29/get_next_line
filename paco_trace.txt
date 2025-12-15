@@ -1,0 +1,167 @@
++++ dirname /home/cpicon-m/francinette/tester.sh
+++ cd /home/cpicon-m/francinette
+++ pwd
++ DIR=/home/cpicon-m/francinette
++ current_dir=/home/cpicon-m/Proyectos42/get_next_line
++ version=68
++ cd /home/cpicon-m/Proyectos42/get_next_line
++ source /home/cpicon-m/francinette/venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /usr/bin/bash -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/cpicon-m/francinette/venv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/home/cpicon-m/francinette:/home/cpicon-m/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ PATH=/home/cpicon-m/francinette/venv/bin:/home/cpicon-m/francinette:/home/cpicon-m/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ PS1='(venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ '[' -n /usr/bin/bash -o -n '' ']'
+++ hash -r
++ python /home/cpicon-m/francinette/main.py -s
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                Welcome to Francinette, a 42 tester framework!                ║
+╚═══════════════════════╦══════════════════════════════╦═══════════════════════╝
+                        ║         get_next_line        ║
+                        ╚══════════════════════════════╝
+⠋ Preparing framework⠙ Preparing framework⠹ Preparing framework⠸ Preparing framework✔ Preparing framework
+⠋ Executing: norminette⠙ Executing: norminette⠹ Executing: norminette⠸ Executing: norminette⠼ Executing: norminette⠴ Executing: norminette⠦ Executing: norminette⠧ Executing: norminette⠇ Executing: norminette⠏ Executing: norminette✖ Executing: norminette
+get_next_line.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  17, col:  12):	space before function name
+Error: SPACE_BEFORE_FUNC    (line:  23, col:  12):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  25, col:   9):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  26, col:  12):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  26, col:  13):	Misaligned variable declaration
+Error: SPACE_REPLACE_TAB    (line:  27, col:   9):	Found space when expecting tab
+Error: TOO_MANY_LINES       (line:  56, col:   1):	Function has more than 25 lines
+Error: SPACE_BEFORE_FUNC    (line:  58, col:  12):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  60, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  61, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  62, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  62, col:  10):	Misaligned variable declaration
+Error: SPACE_BEFORE_FUNC    (line:  87, col:  12):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  89, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  90, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  91, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  91, col:  10):	Misaligned variable declaration
+Error: TOO_MANY_LINES       (line: 116, col:   1):	Function has more than 25 lines
+Error: BRACE_SHOULD_EOL     (line: 136, col:   1):	Expected newline after brace
+get_next_line.h: Error!
+Error: CONSECUTIVE_NEWLINES (line:  21, col:   1):	Consecutive newlines
+Error: CONSECUTIVE_NEWLINES (line:  25, col:   1):	Consecutive newlines
+get_next_line_utils.c: Error!
+Error: TOO_MANY_LINES       (line:  61, col:   1):	Function has more than 25 lines
+main.c: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: SPACE_BEFORE_FUNC    (line:   8, col:   4):	space before function name
+Error: TOO_FEW_TAB          (line:  10, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  10, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  10, col:   8):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  11, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  11, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  11, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  11, col:  10):	Misaligned variable declaration
+Error: TOO_FEW_TAB          (line:  12, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  12, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  12, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  12, col:  11):	Declaration and assignation on a single line
+Error: TOO_FEW_TAB          (line:  14, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  14, col:   5):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  15, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  15, col:   5):	Space on empty line
+Error: TOO_FEW_TAB          (line:  16, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  16, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  17, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  17, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  18, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  18, col:   5):	Space on empty line
+Error: TOO_FEW_TAB          (line:  19, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  19, col:   5):	Space on empty line
+Error: TOO_FEW_TAB          (line:  20, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  20, col:   9):	Found space when expecting tab
+Error: EMPTY_LINE_FUNCTION  (line:  21, col:   1):	Empty line in function
+Error: TOO_FEW_TAB          (line:  22, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  22, col:   5):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  23, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  23, col:   5):	Space on empty line
+Error: TOO_FEW_TAB          (line:  24, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  24, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  25, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  25, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  26, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  26, col:   5):	Space on empty line
+Error: EMPTY_LINE_FUNCTION  (line:  27, col:   1):	Empty line in function
+Error: TOO_FEW_TAB          (line:  28, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  28, col:   5):	Found space when expecting tab
+Error: ASSIGN_IN_CONTROL    (line:  28, col:  18):	Assignment in control structure
+Error: TOO_FEW_TAB          (line:  29, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  29, col:   5):	Space on empty line
+Error: TOO_FEW_TAB          (line:  30, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  30, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  31, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  31, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  32, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  32, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  33, col:   1):	Missing tabs for indent level
+Error: FORBIDDEN_CS         (line:  33, col:   9):	Forbidden control structure
+Error: SPACE_REPLACE_TAB    (line:  33, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  34, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  34, col:  13):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  35, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  35, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  36, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  36, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  37, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  37, col:   5):	Space on empty line
+Error: TOO_FEW_TAB          (line:  38, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  38, col:   5):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  39, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  39, col:   5):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  40, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  40, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  41, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  41, col:   5):	Found space when expecting tab
+Error: BRACE_SHOULD_EOL     (line:  42, col:   1):	Expected newline after brace
+Error: TOO_MANY_LINES       (line:  42, col:   1):	Function has more than 25 lines
+
+ℹ Running tests: fsoares (my own tests)
+[1;35mBUFFER_SIZE[0m: 1
+[0;34mInvalid fd          [0m: [0;32m1.OK [0m[0;32m2.OK [0m[0;32m3.OK [0m[0;32m4_LEAKS.OK [0m[0;32m5_NULL_CHECK.OK [0m
+[0;34mempty.txt           [0m: [0;32m1.OK [0m[0;32m2.OK [0m[0;32m3_LEAKS.OK [0m[0;32m4_NULL_CHECK.OK [0m
+[0;34m1char.txt           [0m: [0;31m1.KO [0m[0;32m2.OK [0m[0;31m3_LEAKS.KO [0m[0;32m4_NULL_CHECK.OK [0m
+Segmentation fault (core dumped)
+make: [Makefile:23: mandatory] Error 139 (ignored)
+[1;35mBUFFER_SIZE[0m: 10
+[0;34mInvalid fd          [0m: [0;32m1.OK [0m[0;32m2.OK [0m[0;32m3.OK [0m[0;32m4_LEAKS.OK [0m[0;32m5_NULL_CHECK.OK [0m
+[0;34mempty.txt           [0m: [0;32m1.OK [0m[0;32m2.OK [0m[0;32m3_LEAKS.OK [0m[0;32m4_NULL_CHECK.OK [0m
+[0;34m1char.txt           [0m: [0;31m1.KO [0m[0;32m2.OK [0m[0;31m3_LEAKS.KO [0m[0;32m4_NULL_CHECK.OK [0m
+Segmentation fault (core dumped)
+make: [Makefile:24: mandatory] Error 139 (ignored)
+[1;35mBUFFER_SIZE[0m: 1000000
+[0;34mInvalid fd          [0m: [0;32m1.OK [0m[0;32m2.OK [0m[0;32m3.OK [0m[0;32m4_LEAKS.OK [0m[0;32m5_NULL_CHECK.OK [0m
+[0;34mempty.txt           [0m: [0;32m1.OK [0m[0;32m2.OK [0m[0;32m3_LEAKS.OK [0m[0;32m4_NULL_CHECK.OK [0m
+[0;34m1char.txt           [0m: [0;31m1.KO [0m[0;32m2.OK [0m[0;31m3_LEAKS.KO [0m[0;32m4_NULL_CHECK.OK [0m
+Segmentation fault (core dumped)
+make: [Makefile:25: mandatory] Error 139 (ignored)
+⠋ Processing output⠙ Processing outputErrors found:
+
+To see the tests open: /home/cpicon-m/francinette/tests/get_next_line/fsoares/tester.c
+
+
+Summary: no bonus
+
+Norminette Errors: get_next_line.c, get_next_line.h, get_next_line_utils.c, main.c
+
+Failed tests: fsoares
+

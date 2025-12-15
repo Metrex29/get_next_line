@@ -6,7 +6,7 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:23 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/11 13:59:10 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/11 15:39:32 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ static char *get_buffer_to_stash(int fd, char *stash)
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (ft_free_leak(stash));
-	if (!stash)
-		stash = ft_strdup("");
 	read_bytes = 1;
 	while (!ft_strchr(stash, '\n') && read_bytes > 0)
 	{
@@ -41,7 +39,7 @@ static char *get_buffer_to_stash(int fd, char *stash)
 			return (ft_free_leak(stash));
 		}
 		if (read_bytes == 0)
-			break;
+			break ;
 		buffer[read_bytes] = '\0';
 		tmp = ft_strjoin(stash, buffer);
 		if (!tmp)
@@ -61,15 +59,19 @@ static char *return_line(char *stash)
 {
 	int i;
 	int j;
+	size_t len;
 	char *line;
 
 	i = 0;
 	j = 0;
 	if (!stash || !stash[0])
 		return (NULL);
-	while (stash[i] != '\n' && stash[i] != '\0')
+	while (stash[i] && stash[i] != '\n')
 		i++;
-	line = malloc(i + 2);
+	len = i;
+	if(stash[i] == '\n')
+		len++;
+	line = malloc(len + 1);
 	if (!line)
 		return (NULL);
 	while (j < i)
@@ -107,7 +109,7 @@ static char *free_stash(char *stash)
 	if (!new_stash)
 	{
 		free(stash);
-		return (NULL);
+		return (0);
 	}
 	i++;
 	while (stash[i])
@@ -119,20 +121,21 @@ static char *free_stash(char *stash)
 
 char	*get_next_line(int fd)
 {
-	static char	*stash[OPEN_MAX];
+	static char	*stash;
 	char		*line;
 
-	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	stash[fd] = get_buffer_to_stash(fd, stash[fd]);
-	if (!stash[fd])
+	stash = get_buffer_to_stash(fd, stash);
+	if (!stash)
 		return (NULL);
-	line = return_line(stash[fd]);
+	line = return_line(stash);
 	if (!line)
 	{
-		stash[fd] = free_stash(stash[fd]);
+		free(stash);
+		stash = NULL;
 		return (NULL);
 	}
-	stash[fd] = free_stash(stash[fd]);
+	stash = free_stash(stash);
 	return (line);
 }

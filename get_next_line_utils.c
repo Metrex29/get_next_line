@@ -6,7 +6,7 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:41 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/11 12:33:12 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/11 15:42:42 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,28 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t				i;
+	unsigned char		*d;
+	const unsigned char	*s;
+
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	i = 0;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dest);
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*p;
-	size_t	i;
-	size_t	j;
 	size_t	len1;
 	size_t	len2;
 
@@ -38,25 +54,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	p = malloc(len1 + len2 + 1);
 	if (!p)
 		return (NULL);
-	i = 0;
-	j = 0;
-	if (s1)
-	{
-		while (i < len1)
-		{
-			p[i] = s1[i];
-			i++;
-		}
-	}
-	if (s2)
-	{
-		while (j < len2)
-		{
-			p[i + j] = s2[j];
-			j++;
-		}
-	}
-	p[i + j] = '\0';
+	if (len1)
+		ft_memcpy(p, s1, len1);
+	if (len2)
+		ft_memcpy(p + len1, s2, len2);
+	p[len1 + len2] = '\0';
 	return (p);
 }
 
