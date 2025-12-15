@@ -6,7 +6,7 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:55:02 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/11 15:42:35 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:00:57 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,4 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *string);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
-
 #endif

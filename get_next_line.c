@@ -6,7 +6,7 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:23 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/11 15:39:32 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:56:27 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char *get_buffer_to_stash(int fd, char *stash)
 			return (ft_free_leak(stash));
 		}
 		if (read_bytes == 0)
-			break ;
+			break;
 		buffer[read_bytes] = '\0';
 		tmp = ft_strjoin(stash, buffer);
 		if (!tmp)
@@ -69,7 +69,7 @@ static char *return_line(char *stash)
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	len = i;
-	if(stash[i] == '\n')
+	if (stash[i] == '\n')
 		len++;
 	line = malloc(len + 1);
 	if (!line)
@@ -90,7 +90,7 @@ static char *return_line(char *stash)
 
 static char *free_stash(char *stash)
 {
-	int i;
+	size_t i;
 	int j;
 	char *new_stash;
 
@@ -107,10 +107,7 @@ static char *free_stash(char *stash)
 	}
 	new_stash = malloc(ft_strlen(stash) - i + 1);
 	if (!new_stash)
-	{
-		free(stash);
-		return (0);
-	}
+		return (ft_free_leak(stash));
 	i++;
 	while (stash[i])
 		new_stash[j++] = stash[i++];
@@ -119,10 +116,10 @@ static char *free_stash(char *stash)
 	return (new_stash);
 }
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	static char	*stash;
-	char		*line;
+	static char *stash;
+	char *line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
