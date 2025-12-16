@@ -1,6 +1,0 @@
-execve("/usr/bin/python3", ["/usr/bin/python3", "/home/cpicon-m/francinette/main."..., "-s"], 0x7ffcb473ef38 /* 52 vars */) = 0
-Traceback (most recent call last):
-  File "/home/cpicon-m/francinette/main.py", line 12, in <module>
-    from git import Repo
-ModuleNotFoundError: No module named 'git'
-+++ exited with 1 +++
