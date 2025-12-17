@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/* */
-/* :::      ::::::::   */
-/* get_next_line_utils.c                              :+:      :+:    :+:   */
-/* +:+ +:+         +:+     */
-/* By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
-/* +#+#+#+#+#+   +#+           */
-/* Created: 2025/11/03 15:47:41 by raulp             #+#    #+#             */
-/* Updated: 2025/12/15 17:15:33 by cpicon-m         ###   ########.fr       */
-/* */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/17 12:26:41 by cpicon-m          #+#    #+#             */
+/*   Updated: 2025/12/17 12:40:35 by cpicon-m         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
@@ -43,6 +43,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
 char	*ft_strjoin(char *s1, char const *s2)
 {
 	size_t	len1;
@@ -51,14 +52,17 @@ char	*ft_strjoin(char *s1, char const *s2)
 
 	if (!s1 && !s2)
 		return (NULL);
-	len1 = s1 ? ft_strlen(s1) : 0;
-	len2 = s2 ? ft_strlen(s2) : 0;
+	if (s1)
+		len1 = ft_strlen(s1);
+	else
+		len1 = 0;
+	if (s2)
+		len2 = ft_strlen(s2);
+	else
+		len2 = 0;
 	p = malloc(len1 + len2 + 1);
 	if (!p)
-	{
-		free(s1);
-		return (NULL);
-	}
+		return (ft_free_leak(s1));
 	if (s1)
 		ft_memcpy(p, s1, len1);
 	if (s2)
@@ -68,10 +72,9 @@ char	*ft_strjoin(char *s1, char const *s2)
 	return (p);
 }
 
-
 char	*ft_strchr(const char *s, int c)
 {
-	size_t i;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
@@ -87,11 +90,11 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-
 char	*ft_strdup(const char *s)
 {
-	size_t i, len;
-	char *dup;
+	size_t	i;
+	size_t	len;
+	char	*dup;
 
 	if (!s)
 		return (NULL);
@@ -110,4 +113,3 @@ char	*ft_strdup(const char *s)
 	dup[i] = '\0';
 	return (dup);
 }
-
