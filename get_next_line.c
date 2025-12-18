@@ -6,7 +6,7 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:23 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/17 15:26:35 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/18 09:58:26 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static char	*return_line(char *stash)
 	if (!stash || !stash[0])
 		return (NULL);
 	i = 0;
+	j = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	len = i;
@@ -66,7 +67,6 @@ static char	*return_line(char *stash)
 	line = malloc(len + 1);
 	if (!line)
 		return (NULL);
-	j = 0;
 	ft_memcpy(line + j, stash + j, i - j);
 	j = i;
 	if (stash[i] == '\n')

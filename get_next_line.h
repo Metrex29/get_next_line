@@ -6,7 +6,7 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:55:02 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/17 12:36:25 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/18 10:25:58 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 
-# endif
-# ifndef OPEN_MAX
-#  define OPEN_MAX 1024
 # endif
 
 char		*get_next_line(int fd);
