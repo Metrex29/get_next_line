@@ -25,7 +25,7 @@ line = get_next_line(fd); // return NULL
 ```
 ## Compilación
 ```bash
-gcc -Wall -Wextra -Werror -D BUFFER_SIZE=32 get_next_line.c main.c -o gnl
+gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c main.c -o gnl
 ```
 ## main
 

@@ -6,7 +6,7 @@
 /*   By: cpicon-m <cpicon-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:47:23 by raulp             #+#    #+#             */
-/*   Updated: 2025/12/17 15:13:22 by cpicon-m         ###   ########.fr       */
+/*   Updated: 2025/12/17 15:26:35 by cpicon-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,12 @@ char	*get_next_line(int fd)
 	if (!stash)
 		return (NULL);
 	line = return_line(stash);
-	if(!line)
-		{
-			free(stash);
-			stash = NULL;
-			return NULL;
-		}
+	if (!line)
+	{
+		free(stash);
+		stash = NULL;
+		return (NULL);
+	}
 	stash = free_stash(stash);
 	return (line);
 }
